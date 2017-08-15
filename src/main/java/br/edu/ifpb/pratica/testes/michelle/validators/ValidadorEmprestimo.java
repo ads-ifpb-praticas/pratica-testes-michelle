@@ -22,6 +22,6 @@ public class ValidadorEmprestimo {
     }
     
     public boolean validateDevolucao(Emprestimo emprestimo) {
-        return emprestimo.getDate().isAfter(emprestimo.getDevolucao());
+        return emprestimo.getDate().isBefore(emprestimo.getDevolucao());
     }
 }

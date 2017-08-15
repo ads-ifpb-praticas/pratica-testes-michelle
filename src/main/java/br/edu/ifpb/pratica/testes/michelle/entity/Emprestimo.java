@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author miolivc
  */
 public class Emprestimo {
-    int id;
+    private int id;
     private Filme filme;
     private LocalDate date;
     private LocalDate devolucao;
