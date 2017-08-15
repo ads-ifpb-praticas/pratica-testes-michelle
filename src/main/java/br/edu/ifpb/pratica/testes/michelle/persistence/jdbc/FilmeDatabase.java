@@ -17,8 +17,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -41,6 +39,7 @@ public class FilmeDatabase implements FilmeDAO {
             stmt.setString(2, filme.getGenero().name());
             stmt.setInt(3, filme.getDuracao());
             if (stmt.executeUpdate() != 1) throw new SQLException();
+            stmt.close();
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -59,6 +58,7 @@ public class FilmeDatabase implements FilmeDAO {
                 filme.setGenero(GeneroFilme.valueOf(rs.getString("GENERO")));
                 filme.setDuracao(rs.getInt("DURACAO"));
             }
+            stmt.close();
             return filme;
         } catch (SQLException ex) {
             System.err.println(ex);
@@ -81,6 +81,7 @@ public class FilmeDatabase implements FilmeDAO {
                 filme.setDuracao(rs.getInt("DURACAO"));
                 filmes.add(filme);
             }
+            stmt.close();
             return filmes;
         } catch (SQLException ex) {
             System.err.println(ex);

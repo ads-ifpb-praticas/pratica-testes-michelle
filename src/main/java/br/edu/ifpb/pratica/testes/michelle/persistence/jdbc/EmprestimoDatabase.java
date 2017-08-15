@@ -9,6 +9,8 @@ import br.edu.ifpb.pratica.testes.michelle.entity.Emprestimo;
 import br.edu.ifpb.pratica.testes.michelle.factory.ConnectionFactory;
 import br.edu.ifpb.pratica.testes.michelle.persistence.model.EmprestimoDAO;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 /**
  *
@@ -24,7 +26,12 @@ public class EmprestimoDatabase implements EmprestimoDAO {
     
     @Override
     public void add(Emprestimo emprestimo) {
-        
+        try {
+            String sql = "INSERT INTO EMPRESTIMO() VALUES ()";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 
     @Override
