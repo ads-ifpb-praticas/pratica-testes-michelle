@@ -10,7 +10,7 @@ package br.edu.ifpb.pratica.testes.michelle.entity;
  * @author ifpb
  */
 public class Filme {
-    
+    private int id;
     private String titulo;
     private GeneroFilme genero;
     private int duracao;
@@ -22,6 +22,14 @@ public class Filme {
         this.titulo = titulo;
         this.genero = genero;
         this.duracao = duracao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitulo() {

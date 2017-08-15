@@ -12,6 +12,7 @@ import java.time.LocalDate;
  * @author miolivc
  */
 public class Emprestimo {
+    int id;
     private Filme filme;
     private LocalDate date;
     private LocalDate devolucao;
@@ -20,6 +21,14 @@ public class Emprestimo {
     public Emprestimo() {
         this.date = LocalDate.now();
         this.situacao = FilmeSituacao.EMPRESTADO;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public LocalDate getDate() {
