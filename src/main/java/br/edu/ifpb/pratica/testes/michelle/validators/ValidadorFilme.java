@@ -18,7 +18,7 @@ public class ValidadorFilme {
     public boolean validate(Filme filme) {
        if (filme.getDuracao() <= 0) return false;
        if (filme.getGenero() == null) return false;
-       if (filme.getTitulo().length() > 50) return false;
+       if (filme.getTitulo().length() == 0 || filme.getTitulo().length() > 50 || filme.getTitulo() == null) return false;
        Pattern pattern = Pattern.compile("[a-zA-Z_0-9_#_!_?]");
        Matcher matcher = pattern.matcher(filme.getTitulo());
        return matcher.matches();

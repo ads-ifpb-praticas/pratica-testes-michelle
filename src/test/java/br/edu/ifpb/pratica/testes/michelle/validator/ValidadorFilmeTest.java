@@ -3,18 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.pratica.testes.michelle;
+package br.edu.ifpb.pratica.testes.michelle.validator;
 
 import br.edu.ifpb.pratica.testes.michelle.entity.Filme;
 import br.edu.ifpb.pratica.testes.michelle.entity.GeneroFilme;
 import br.edu.ifpb.pratica.testes.michelle.validators.ValidadorFilme;
+import org.junit.Assert;
+import org.junit.Test;
 
 /**
  *
  * @author ifpb
  */
 public class ValidadorFilmeTest {
-    private ValidadorFilme validador = new ValidadorFilme();
+    private final ValidadorFilme validador = new ValidadorFilme();
     
     @Test
     public void testaDuracaoFilme() {
@@ -30,13 +32,19 @@ public class ValidadorFilmeTest {
     
     @Test
     public void testaQuantidadeCaracteres() {
-        Filme filme = new Filme("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", GeneroFilme.ROMANCE, 123);
+        Filme filme = new Filme("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", GeneroFilme.ROMANCE, 123);
         Assert.assertFalse(validador.validate(filme));
     }
     
     @Test
     public void testaGeneroNulo() {
+        Filme filme = new Filme("Maria", null, 12);
+        Assert.assertFalse(validador.validate(filme));
+    }
+    
+    @Test 
+    public void testaTituloNulo() {
         Filme filme = new Filme("Maria", null, 12);
         Assert.assertFalse(validador.validate(filme));
     }
