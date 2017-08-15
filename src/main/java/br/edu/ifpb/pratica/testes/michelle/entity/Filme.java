@@ -14,7 +14,6 @@ public class Filme {
     private String titulo;
     private GeneroFilme genero;
     private int duracao;
-    private FilmeSituacao situacao;
 
     public Filme() {
     }
@@ -49,18 +48,8 @@ public class Filme {
         this.duracao = duracao;
     }
 
-    public FilmeSituacao getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(FilmeSituacao situacao) {
-        this.situacao = situacao;
-    }
-
     @Override
     public String toString() {
-        return "Filme{" + "titulo=" + titulo + ", genero=" + genero 
-                + ", duracao=" + duracao + ", situacao=" + situacao + '}';
+        return "Filme{" + "titulo=" + titulo + ", genero=" + genero + ", duracao=" + duracao + '}';
     }
-
 }
