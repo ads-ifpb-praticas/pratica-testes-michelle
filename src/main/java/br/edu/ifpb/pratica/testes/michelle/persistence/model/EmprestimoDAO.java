@@ -6,6 +6,7 @@
 package br.edu.ifpb.pratica.testes.michelle.persistence.model;
 
 import br.edu.ifpb.pratica.testes.michelle.entity.Emprestimo;
+import java.util.List;
 
 /**
  *
@@ -14,6 +15,7 @@ import br.edu.ifpb.pratica.testes.michelle.entity.Emprestimo;
 public interface EmprestimoDAO {
     
     void add(Emprestimo emprestimo);
+    List<Emprestimo> list();
     Emprestimo get(int id);
     void update(Emprestimo emprestimo);
     
