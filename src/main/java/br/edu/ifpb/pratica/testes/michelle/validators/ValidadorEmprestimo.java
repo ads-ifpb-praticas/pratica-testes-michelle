@@ -16,12 +16,14 @@ import java.time.LocalDate;
 public class ValidadorEmprestimo {
     
     public boolean validateEmprestimo(Emprestimo emprestimo) {
+        if (emprestimo == null) return false;
         if (emprestimo.getDate().isBefore(LocalDate.now())) return false;
         if (emprestimo.getFilme() == null) return false;
         return emprestimo.getSituacao().equals(FilmeSituacao.EMPRESTADO);
     }
     
     public boolean validateDevolucao(Emprestimo emprestimo) {
+        if (emprestimo == null) return false;
         return emprestimo.getDate().isBefore(emprestimo.getDevolucao());
     }
 }

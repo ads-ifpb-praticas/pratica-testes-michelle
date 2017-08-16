@@ -19,6 +19,11 @@ public class ValidadorFilmeTest {
     private final ValidadorFilme validador = new ValidadorFilme();
     
     @Test
+    public void testaFilmeNulo() {
+        Assert.assertFalse(validador.validate(null));
+    }
+    
+    @Test
     public void testaDuracaoFilme() {
         Filme filme = new Filme("Hahaha, eu te peguei.", GeneroFilme.COMÉDIA, 0);
         Assert.assertFalse(validador.validate(filme));

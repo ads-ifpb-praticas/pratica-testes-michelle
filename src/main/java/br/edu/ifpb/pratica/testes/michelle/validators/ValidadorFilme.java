@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 public class ValidadorFilme {
     
     public boolean validate(Filme filme) {
+       if (filme == null) return false;
        if (filme.getDuracao() <= 0) return false;
        if (filme.getGenero() == null) return false;
        if (filme.getTitulo().length() == 0 || filme.getTitulo().length() > 50 || filme.getTitulo() == null) return false;

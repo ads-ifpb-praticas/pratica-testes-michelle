@@ -18,8 +18,14 @@ import org.junit.Test;
  *
  * @author miolivc
  */
-public class ValidadorDataEmprestimoTest {
+public class ValidadorEmprestimoTest {
     private final ValidadorEmprestimo validador = new ValidadorEmprestimo();
+    
+    @Test
+    public void testaEmprestimoNulo() {
+        Assert.assertFalse(validador.validateEmprestimo(null));
+        Assert.assertFalse(validador.validateDevolucao(null));
+    }
     
     @Test
     public void testaDataRetroativa() {
@@ -40,9 +46,8 @@ public class ValidadorDataEmprestimoTest {
     
     @Test
     public void testaFilmeNulo() {
-        Filme filme = null;
         Emprestimo emprestimo = new Emprestimo();
-        emprestimo.setFilme(filme);
+        emprestimo.setFilme(null);
         Assert.assertFalse(validador.validateEmprestimo(emprestimo));
     }
     
