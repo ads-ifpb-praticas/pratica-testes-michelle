@@ -43,7 +43,7 @@ public class FilmeManager {
     
     public void editaFilme(Filme filme) {
         if (! dao.isLocked(filme.getId())) {
-            
+            dao.update(filme);
         }
     }
     

@@ -99,6 +99,17 @@ public class FilmeDatabase implements FilmeDAO {
     
     @Override
     public void update(Filme filme) {
-        String sql = "";
+        String sql = "UPDATE FILME SET TITULO = ? GENERO = ? DURACAO = ? WHERE ID = ?";
+        try {
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, filme.getTitulo());
+                stmt.setString(2, filme.getGenero().name());
+                stmt.setInt(3, filme.getDuracao());
+                stmt.setInt(4, filme.getId());
+                if (stmt.executeUpdate() != 1) throw new SQLException();
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
     }
 }
