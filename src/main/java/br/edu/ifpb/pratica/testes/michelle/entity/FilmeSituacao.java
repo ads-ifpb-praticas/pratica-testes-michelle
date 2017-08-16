@@ -11,5 +11,6 @@ package br.edu.ifpb.pratica.testes.michelle.entity;
  */
 public enum FilmeSituacao {
     EMPRESTADO,
-    DISPONIVEL
+    DISPONIVEL,
+    DEVOLVIDO
 }
