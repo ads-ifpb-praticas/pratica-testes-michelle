@@ -13,7 +13,8 @@ import java.util.List;
  * @author miolivc
  */
 public interface EmprestimoDAO {
-    
+
+    boolean isLocked(int id);
     void add(Emprestimo emprestimo);
     List<Emprestimo> list();
     Emprestimo get(int id);

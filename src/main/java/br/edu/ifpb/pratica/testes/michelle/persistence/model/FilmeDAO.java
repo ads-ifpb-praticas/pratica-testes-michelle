@@ -14,8 +14,10 @@ import java.util.List;
  */
 public interface FilmeDAO {
     
+    boolean isLocked(int id);
     void add(Filme filme);
     Filme get(int id);
     List<Filme> list();
+    void update(Filme filme);
     
 }

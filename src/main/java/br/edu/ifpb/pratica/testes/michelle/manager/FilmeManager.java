@@ -41,4 +41,10 @@ public class FilmeManager {
         return dao.get(id);
     }
     
+    public void editaFilme(Filme filme) {
+        if (! dao.isLocked(filme.getId())) {
+            
+        }
+    }
+    
 }

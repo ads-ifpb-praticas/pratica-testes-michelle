@@ -14,7 +14,7 @@ public class Filme {
     private String titulo;
     private GeneroFilme genero;
     private int duracao;
-
+    
     public Filme() {
     }
     

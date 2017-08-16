@@ -20,6 +20,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -31,6 +33,19 @@ public class EmprestimoDatabase implements EmprestimoDAO {
 
     public EmprestimoDatabase() {
         this.connection = ConnectionFactory.getConnection();
+    }
+    
+    @Override 
+    public boolean isLocked(int id) {
+        try {
+            String sql = "SELECT EXISTS FROM EMPRESTIMO WHERE FILME = ? AND SITUACAO = 'EMPRESTADO'";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+            return stmt.getMoreResults();
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        return false;
     }
     
     @Override

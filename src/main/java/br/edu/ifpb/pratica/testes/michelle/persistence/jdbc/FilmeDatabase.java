@@ -8,6 +8,8 @@ package br.edu.ifpb.pratica.testes.michelle.persistence.jdbc;
 import br.edu.ifpb.pratica.testes.michelle.entity.Filme;
 import br.edu.ifpb.pratica.testes.michelle.entity.GeneroFilme;
 import br.edu.ifpb.pratica.testes.michelle.factory.ConnectionFactory;
+import br.edu.ifpb.pratica.testes.michelle.factory.PersistFactory;
+import br.edu.ifpb.pratica.testes.michelle.persistence.model.EmprestimoDAO;
 import br.edu.ifpb.pratica.testes.michelle.persistence.model.FilmeDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -30,16 +32,22 @@ public class FilmeDatabase implements FilmeDAO {
         this.connection = ConnectionFactory.getConnection();
     }
     
+    @Override 
+    public boolean isLocked(int id) {
+        EmprestimoDAO emprestimoDAO = PersistFactory.createFactory(PersistFactory.DATABASE).createEmprestimoDAO();
+        return emprestimoDAO.isLocked(id);
+    }
+    
     @Override
     public void add(Filme filme) {
         try {  
             String sql = "INSERT INTO FILME(TITULO, GENERO, DURACAO) VALUES(?,?,?)";
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1, filme.getTitulo());
-            stmt.setString(2, filme.getGenero().name());
-            stmt.setInt(3, filme.getDuracao());
-            if (stmt.executeUpdate() != 1) throw new SQLException();
-            stmt.close();
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, filme.getTitulo());
+                stmt.setString(2, filme.getGenero().name());
+                stmt.setInt(3, filme.getDuracao());
+                if (stmt.executeUpdate() != 1) throw new SQLException();
+            }
         } catch (SQLException ex) {
             System.err.println(ex);
         }
@@ -89,4 +97,8 @@ public class FilmeDatabase implements FilmeDAO {
         return Collections.EMPTY_LIST;
     }
     
+    @Override
+    public void update(Filme filme) {
+        String sql = "";
+    }
 }
